@@ -19,6 +19,7 @@ sumSquaresTwoLarger a b c = sumSquaresTwo . take 2 . sort $ [a, b, c]
 
 -- square root
 
+-- TODO small and large numbers
 goodEnough : Float -> Int -> Bool
 goodEnough guess x = (abs ((square guess) - cast x)) < 0.001
 
