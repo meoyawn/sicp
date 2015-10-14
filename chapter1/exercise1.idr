@@ -1,11 +1,6 @@
-module Excercise1
-
-import Data.Vect
+module excercise1
 
 %default total
-
-pfx : Float
-pfx = (5 + 4 + (2 - (3 - (6 + 4 / 5)))) / 3 * (6 - 2) * (2 - 7)
 
 square : Num a => a -> a
 square x = x * x
@@ -15,7 +10,7 @@ sumSquaresTwo (x :: y :: []) = (square x) + (square y)
 sumSquaresTwo _ = ?fuck
 
 sumSquaresTwoLarger : Int -> Int -> Int -> Int
-sumSquaresTwoLarger a b c = sumSquaresTwo . take 2 . sort $ [a, b, c]
+sumSquaresTwoLarger a b c = sumSquaresTwo . drop 1 . sort $ [a, b, c]
 
 -- square root
 
