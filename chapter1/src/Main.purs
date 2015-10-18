@@ -7,4 +7,4 @@ import Prelude
 import Control.Monad.Eff.Console
 
 main = do
-  log "Hello sailor!"
+  print $ sqrt 99999999999999.0

@@ -13,6 +13,7 @@
   "dependencies": {
     "purescript-arrays": "~0.4.2",
     "purescript-console": "^0.1.0",
-    "purescript-integers": "~0.2.1"
+    "purescript-integers": "~0.2.1",
+    "purescript-debug": "~0.1.2"
   }
 }
