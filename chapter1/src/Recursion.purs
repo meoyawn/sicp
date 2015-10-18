@@ -29,6 +29,7 @@ fIter = go 2 1 0
   where go _ _ x 0 = x
         go newest middle oldest count = go (newest + 2 * middle + 3 * oldest) newest middle (count - 1)
 
+-- 1.12
 pascal :: Int -> Int -> Int
 pascal 0 0 = 1
 pascal level pos

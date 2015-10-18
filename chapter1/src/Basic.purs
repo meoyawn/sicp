@@ -8,6 +8,9 @@ import Debug.Trace
 square :: forall a. (Semiring a) => a -> a
 square x = x * x
 
+abs :: forall a. (Ord a, Ring a) => a -> a
+abs x = if x < zero then -x else x
+
 sumSquares :: forall a f. (Functor f, Foldable f, Semiring a) => f a -> a
 sumSquares = sum <<< map square
 
