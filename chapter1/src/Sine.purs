@@ -16,6 +16,7 @@ four = three + one
 p :: forall a. (Num a) => a -> a
 p x = three * x - four * cube x
 
+-- 1.15
 sine :: Number -> Number
 sine angle
   | (abs angle) <= 0.0001 = angle
