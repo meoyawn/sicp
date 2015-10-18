@@ -2,13 +2,13 @@ module Basic where
 
 import Prelude
 import Data.Array
+import Data.Foldable
 
-square :: forall a. (Ring a) => a -> a
+square :: forall a. (Semiring a) => a -> a
 square x = x * x
 
-sumSquaresTwo :: Array Int -> Int
-sumSquaresTwo [x, y] = (square x) + (square y)
-sumSquaresTwo _ = -1
+sumSquares :: forall a f. (Functor f, Foldable f, Semiring a) => f a -> a
+sumSquares = sum <<< map square
 
-sumSquaresTwoLarger :: Int -> Int -> Int -> Int
-sumSquaresTwoLarger a b c = sumSquaresTwo <<< drop 1 <<< sort $ [a, b, c]
+sumSquaresTwoLarger :: forall a. (Ord a, Semiring a) => a -> a -> a -> a
+sumSquaresTwoLarger a b c = sumSquares <<< drop 1 <<< sort $ [a, b, c]

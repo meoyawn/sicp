@@ -8,7 +8,6 @@ import Data.Int
 abs :: forall a. (Ord a, Ring a) => a -> a
 abs x = if x < zero then -x else x
 
--- TODO small and large numbers
 goodEnough :: Number -> Number -> Number -> Boolean
 goodEnough prevGuess guess x = distance prevGuess guess < 0.000000000000001
 
