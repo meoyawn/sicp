@@ -7,4 +7,4 @@ import Prelude
 import Control.Monad.Eff.Console
 
 main = do
-  print $ sqrt 999.0
+  print $ cbrt 216000000.0
