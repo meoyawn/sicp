@@ -8,6 +8,7 @@ import Data.Int
 abs :: forall a. (Ord a, Ring a) => a -> a
 abs x = if x < zero then -x else x
 
+-- 1.7
 goodEnough :: Number -> Number -> Number -> Boolean
 goodEnough prevGuess guess x = distance prevGuess guess < 0.000000000000001
 
@@ -24,6 +25,7 @@ rootIter imp prevGuess guess x = if goodEnough prevGuess guess x then guess
 improve :: Number -> Number -> Number
 improve guess x = average guess (x / guess)
 
+-- 1.8
 improveCube :: Number -> Number -> Number
 improveCube guess x = ((x / square guess) + 2.0 * guess) / 3.0
 
