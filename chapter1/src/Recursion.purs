@@ -10,12 +10,15 @@ ackermann 0 y = 2 * y
 ackermann x y = ackermann (x - 1) $ ackermann x (y - 1)
 
 -- 2x
+f :: Int -> Int
 f = ackermann 0
 
 -- 2^x
+g :: Int -> Int
 g = ackermann 1
 
 -- x times 2^2
+h :: Int -> Int
 h = ackermann 2
 
 -- 1.11
