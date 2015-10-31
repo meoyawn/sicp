@@ -26,3 +26,10 @@ prop_FastExpt b (BigPower n) = pow b (toNumber n) =~= fastExpt b n
 
 prop_FastExptIter :: Number -> BigPower -> Boolean
 prop_FastExptIter b (BigPower n) = pow b (toNumber n) =~= fastExptIter b n
+
+newtype SmallInt = SmallInt Int
+instance arbitrarySmallInt :: Arbitrary SmallInt where
+  arbitrary = SmallInt <$> chooseInt (-500) 500
+
+prop_Mult :: Int -> Int -> Boolean
+prop_Mult a b = a * b == fastMult a b
