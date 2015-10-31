@@ -10,12 +10,19 @@ import Test.QuickCheck.Data.ApproxNumber
 
 import Exponentiation
 
-newtype Power = Power Int
-instance arbitraryPower :: Arbitrary Power where
-  arbitrary = Power <$> chooseInt 0 100000
+newtype SmallPower = SmallPower Int
+instance arbitrarySmallPower :: Arbitrary SmallPower where
+  arbitrary = SmallPower <$> chooseInt 0 99999
 
-prop_Expt :: Number -> Power -> Boolean
-prop_Expt b (Power n) = pow b (toNumber n) =~= expt b n
+prop_Expt :: Number -> SmallPower -> Boolean
+prop_Expt b (SmallPower n) = pow b (toNumber n) =~= expt b n
 
-prop_FastExpt :: Number -> Power -> Boolean
-prop_FastExpt b (Power n) = pow b (toNumber n) =~= fastExpt b n
+newtype BigPower = BigPower Int
+instance arbitraryBigPower :: Arbitrary BigPower where
+  arbitrary = BigPower <$> chooseInt 0 99999999999999999999999999999999999999999
+
+prop_FastExpt :: Number -> BigPower -> Boolean
+prop_FastExpt b (BigPower n) = pow b (toNumber n) =~= fastExpt b n
+
+prop_FastExptIter :: Number -> BigPower -> Boolean
+prop_FastExptIter b (BigPower n) = pow b (toNumber n) =~= fastExptIter b n

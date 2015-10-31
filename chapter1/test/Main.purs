@@ -12,3 +12,4 @@ main = do
   quickCheck prop_F
   quickCheck prop_Expt
   quickCheck prop_FastExpt
+  quickCheck prop_FastExptIter
