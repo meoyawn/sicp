@@ -48,6 +48,7 @@ fastMult a b
   | even b = double (fastMult a (halve b))
   | otherwise = a + (fastMult a (b - one))
 
+-- 1.18
 fastMultIter :: Int -> Int -> Int
 fastMultIter = go 0 1
   where go sum multip _ 0 = sum * multip
