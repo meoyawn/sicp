@@ -1,6 +1,7 @@
 language: node_js
 before_install:
   - npm install -g purescript pulp bower
-  - bower install
 script:
-  - pulp -b chapter1/bower.json test
+  - cd chapter1
+  - bower install
+  - pulp test
