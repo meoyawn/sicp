@@ -41,13 +41,18 @@ halve x = x / two
 
 -- 1.17
 fastMult :: Int -> Int -> Int
-fastMult 0 _ = 0
 fastMult _ 0 = 0
-fastMult 1 x = x
-fastMult x 1 = x
 fastMult a b
   | a < 0 = -fastMult (-a) b
   | b < 0 = -fastMult a (-b)
-  | even a = double (fastMult (halve a) b)
   | even b = double (fastMult a (halve b))
   | otherwise = a + (fastMult a (b - one))
+
+fastMultIter :: Int -> Int -> Int
+fastMultIter = go 0 1
+  where go sum multip _ 0 = sum * multip
+        go sum multip a b
+          | a < 0 = -go sum multip (-a) b
+          | b < 0 = -go sum multip a (-b)
+          | even b = go sum (double multip) a (halve b)
+          | otherwise = go (sum + a) multip a (b - 1)

@@ -3,6 +3,8 @@ module Test.Exponentiation where
 import Prelude
 import Math
 import Data.Int (toNumber)
+import Debug.Trace
+import Data.Tuple
 
 import Test.QuickCheck.Arbitrary
 import Test.QuickCheck.Gen
@@ -33,3 +35,6 @@ instance arbitrarySmallInt :: Arbitrary SmallInt where
 
 prop_Mult :: Int -> Int -> Boolean
 prop_Mult a b = a * b == fastMult a b
+
+prop_FastMultIter :: Int -> Int -> Boolean
+prop_FastMultIter a b = a * b == traceShow (Tuple a b) \_ -> fastMultIter a b
