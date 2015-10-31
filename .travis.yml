@@ -1,10 +1,7 @@
 language: node_js
-node_js:
-  - 5.0.0
 before_install:
   - npm install -g purescript pulp bower
 script:
   - cd chapter1
   - bower install
-  - psc --version
   - pulp test
