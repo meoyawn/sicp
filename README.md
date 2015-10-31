@@ -1,3 +1,3 @@
 # sicp
 
-motivational repo with exercises
+exercises
