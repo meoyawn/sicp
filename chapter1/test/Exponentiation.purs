@@ -19,7 +19,7 @@ prop_Expt b (SmallPower n) = pow b (toNumber n) =~= expt b n
 
 newtype BigPower = BigPower Int
 instance arbitraryBigPower :: Arbitrary BigPower where
-  arbitrary = BigPower <$> chooseInt 0 99999999999999999999999999999999999999999
+  arbitrary = BigPower <$> chooseInt 0 99999999999999999999999999999999999999999999999999999999999999999999999999999999999
 
 prop_FastExpt :: Number -> BigPower -> Boolean
 prop_FastExpt b (BigPower n) = pow b (toNumber n) =~= fastExpt b n
