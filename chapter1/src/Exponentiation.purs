@@ -33,12 +33,13 @@ mult a b
 two :: forall a. (Semiring a) => a
 two = one + one
 
-double :: forall a. (Ring a) => a -> a
+double :: forall a. (Semiring a) => a -> a
 double x = x * two
 
 halve :: forall a. (ModuloSemiring a) => a -> a
 halve x = x / two
 
+-- 1.17
 fastMult :: Int -> Int -> Int
 fastMult 0 _ = 0
 fastMult _ 0 = 0
