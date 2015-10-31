@@ -16,3 +16,6 @@ instance arbitraryPower :: Arbitrary Power where
 
 prop_Expt :: Number -> Power -> Boolean
 prop_Expt b (Power n) = pow b (toNumber n) =~= expt b n
+
+prop_FastExpt :: Number -> Power -> Boolean
+prop_FastExpt b (Power n) = pow b (toNumber n) =~= fastExpt b n
