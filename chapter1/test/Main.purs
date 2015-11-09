@@ -7,6 +7,7 @@ import Test.QuickCheck
 import Test.Recursion
 import Test.Exponentiation
 import Test.Sqrt
+import Test.Sine
 
 main :: forall eff. QC eff Unit
 main = do
@@ -18,3 +19,4 @@ main = do
   quickCheck prop_RussianPeasant
   quickCheck prop_Sqrt
   quickCheck prop_Cbrt
+  quickCheck prop_Sine
