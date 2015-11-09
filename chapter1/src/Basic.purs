@@ -8,6 +8,9 @@ import Debug.Trace
 square :: forall a. (Semiring a) => a -> a
 square x = x * x
 
+cube :: forall a. (Num a) => a -> a
+cube x = x * x * x
+
 abs :: forall a. (Ord a, Ring a) => a -> a
 abs x = if x < zero then -x else x
 

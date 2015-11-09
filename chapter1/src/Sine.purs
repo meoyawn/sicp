@@ -4,9 +4,6 @@ import Basic
 
 import Prelude
 
-cube :: forall a. (Num a) => a -> a
-cube x = x * x * x
-
 three :: forall a. (Num a) => a
 three = one + one + one
 
