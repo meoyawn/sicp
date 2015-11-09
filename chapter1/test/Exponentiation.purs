@@ -36,5 +36,6 @@ instance arbitrarySmallInt :: Arbitrary SmallInt where
 prop_Mult :: Int -> Int -> Boolean
 prop_Mult a b = a * b == fastMult a b
 
+-- those are smaller ints because I don't want to fuck with bigints just yet
 prop_RussianPeasant :: SmallInt -> SmallInt -> Boolean
 prop_RussianPeasant (SmallInt a) (SmallInt b) = a * b == russianPeasant a b
