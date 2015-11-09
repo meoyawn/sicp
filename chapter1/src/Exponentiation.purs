@@ -3,6 +3,7 @@ module Exponentiation where
 import Prelude
 import Basic
 import Debug.Trace
+import Data.Tuple
 
 expt :: Number -> Int -> Number
 expt = go 1.0
@@ -48,3 +49,13 @@ fastMult a b
   | b < 0 = -fastMult a (-b)
   | even b = double (fastMult a (halve b))
   | otherwise = a + (fastMult a (b - one))
+
+-- 1.18
+russianPeasant :: Int -> Int -> Int
+russianPeasant = go zero
+  where go sum a b
+          | a < zero = traceShow (Tuple a b) \_ -> go sum (-a) b
+          | b < zero = traceShow (Tuple a b) \_ -> go sum a (-b)
+          | b == one = traceShow (Tuple a b) \_ -> sum + a
+          | even b = traceShow (Tuple a b) \_ -> go sum (double a) (halve b)
+          | otherwise = traceShow (Tuple a b) \_ -> go (sum + a) (double a) (halve b)
