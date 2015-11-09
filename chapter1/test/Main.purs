@@ -14,4 +14,3 @@ main = do
   quickCheck prop_FastExpt
   quickCheck prop_FastExptIter
   quickCheck prop_Mult
-  quickCheck prop_FastMultIter
