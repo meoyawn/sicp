@@ -52,7 +52,7 @@ fastMult a b
 
 -- 1.18
 russianPeasant :: Int -> Int -> Int
-russianPeasant = go zero
+russianPeasant = go 0
   where go sum a 0 = 0
         go sum a 1 = sum + a
         go sum a b
