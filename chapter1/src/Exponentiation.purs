@@ -53,9 +53,10 @@ fastMult a b
 -- 1.18
 russianPeasant :: Int -> Int -> Int
 russianPeasant = go zero
-  where go sum a b
-          | a < zero = traceShow (Tuple a b) \_ -> go sum (-a) b
-          | b < zero = traceShow (Tuple a b) \_ -> go sum a (-b)
-          | b == one = traceShow (Tuple a b) \_ -> sum + a
-          | even b = traceShow (Tuple a b) \_ -> go sum (double a) (halve b)
-          | otherwise = traceShow (Tuple a b) \_ -> go (sum + a) (double a) (halve b)
+  where go sum a 0 = 0
+        go sum a 1 = sum + a
+        go sum a b
+          | a < 0 = -go sum (-a) b
+          | b < 0 = -go sum a (-b)
+          | even b = go sum (double a) (halve b)
+          | otherwise = go (sum + a) (double a) (halve b)
