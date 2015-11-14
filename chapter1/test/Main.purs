@@ -9,6 +9,7 @@ import Test.Exponentiation
 import Test.Sqrt
 import Test.Sine
 import Test.Fibonacci
+import Test.Divisors
 
 main :: forall eff. QC eff Unit
 main = do
@@ -22,3 +23,4 @@ main = do
   quickCheck prop_Cbrt
   quickCheck prop_Sine
   quickCheck prop_Fib
+  quickCheck prop_SmallestDivisor

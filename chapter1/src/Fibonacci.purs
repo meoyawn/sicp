@@ -11,6 +11,7 @@ fibSlow = go 0 1
         go earlier later 2 = earlier + later
         go earlier later count = go later (earlier + later) (count - 1)
 
+-- 1.19
 fib :: Int -> Int
 fib = go 1 0 0 1
   where go a b p q 0 = b
