@@ -18,8 +18,8 @@ smallestDivisor n = findDivisor n 2
 findDivisor :: Int -> Int -> Int
 findDivisor n test
   | square test > n = n
-  | divides test n = test
-  | otherwise = findDivisor n $ next test
+  | divides test n  = test
+  | otherwise       = findDivisor n $ next test
 
 -- 1.23
 next :: Int -> Int
@@ -61,7 +61,7 @@ searchForPrimes n count = do
 expMod :: Int -> Int -> Int -> Int
 expMod _ 0 _ = 1
 expMod base exp m
-  | even exp = (square $ expMod base (exp / 2) m) `mod` m
+  | even exp  = (square $ expMod base (exp / 2) m) `mod` m
   | otherwise = (base * expMod base (exp - 1) m) `mod` m
 
 fermatTest :: forall e. Int -> Eff (random :: RANDOM | e) Boolean
@@ -70,9 +70,9 @@ fermatTest n = do
   return $ a == expMod a n n
 
 fastPrime :: forall e. Int -> Int -> Eff (random :: RANDOM | e) Boolean
-fastPrime 0 _ = return true
-fastPrime 1 _ = return true
-fastPrime _ 0 = return true
+fastPrime 0 _     = return true
+fastPrime 1 _     = return true
+fastPrime _ 0     = return true
 fastPrime n times = do
   f <- fermatTest n
   if f then fastPrime n (times - 1) else return false
