@@ -24,3 +24,4 @@ main = do
   quickCheck prop_Sine
   quickCheck prop_Fib
   quickCheck prop_SmallestDivisor
+  quickCheck prop_Primes

@@ -66,11 +66,12 @@ expMod base exp m
 
 fermatTest :: forall e. Int -> Eff (random :: RANDOM | e) Boolean
 fermatTest n = do
-  r <- randomInt 0 (n - 1)
-  return $ tryIt (1 + r)
-    where tryIt a = (expMod a n n) == a
+  a <- randomInt 1 (n - 1)
+  return $ a == expMod a n n
 
 fastPrime :: forall e. Int -> Int -> Eff (random :: RANDOM | e) Boolean
+fastPrime 0 _ = return true
+fastPrime 1 _ = return true
 fastPrime _ 0 = return true
 fastPrime n times = do
   f <- fermatTest n
