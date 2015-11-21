@@ -3,6 +3,7 @@ module Test.Divisors where
 import Prelude
 import Divisors
 import Basic
+import Test.Exponentiation
 
 import Control.Monad.Eff
 import Control.Monad.Eff.Unsafe
@@ -30,3 +31,7 @@ prop_Primes :: forall e. Nat -> BoolEff (random :: RANDOM | e)
 prop_Primes (Nat n) = BoolEff $ do
   fp <- fastPrime n 10
   return $ fp == prime n
+
+prop_Carmichael :: forall e. BigPower -> BoolEff (random :: RANDOM | e)
+prop_Carmichael (BigPower n) = BoolEff $ do
+  if congruent n then fastPrime n 10 else return true
