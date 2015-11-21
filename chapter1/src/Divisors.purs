@@ -76,3 +76,12 @@ fastPrime _ 0     = return true
 fastPrime n times = do
   f <- fermatTest n
   if f then fastPrime n (times - 1) else return false
+
+carmichael :: Int -> Int -> Boolean
+carmichael a n = expMod a n n == a `mod` n
+
+-- 1.27
+congruent :: Int -> Boolean
+congruent n = go (n - 1)
+  where go 0 = true
+        go a = if carmichael a n then go (a - 1) else false
