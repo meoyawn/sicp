@@ -8,4 +8,4 @@ import Control.Monad.Eff.Console
 import Divisors
 
 main :: forall e. Eff (console :: CONSOLE, now :: Now | e) Unit
-main = timedPrimeTest 19999999
+main = searchForPrimes 1000000 3
