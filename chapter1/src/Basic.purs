@@ -7,7 +7,7 @@ import Data.Foldable
 square :: forall a. (Semiring a) => a -> a
 square x = x * x
 
-cube :: forall a. (Num a) => a -> a
+cube :: forall a. (Semiring a) => a -> a
 cube x = x * x * x
 
 abs :: forall a. (Ord a, Ring a) => a -> a
