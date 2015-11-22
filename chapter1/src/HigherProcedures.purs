@@ -19,7 +19,7 @@ integral f a b dx = (sum f (a + dx / 2.0) addDx b) * dx
 -- 1.29
 simpsonsRule :: (Number -> Number) -> Number -> Number -> Number
 simpsonsRule f a b = h / 3.0 * (sum func 0 inc n)
-  where n = 1000
+  where n = 100
         h = (b - a) / (toNumber n)
         y k = f (a + (toNumber k) * h)
         func k
