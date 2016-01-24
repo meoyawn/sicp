@@ -1,13 +1,19 @@
 module HigherProcedures where
 
 import Prelude
-import Basic
 import Data.Int
 
 sum :: forall t n. (Ord t, Semiring n) => (t -> n) -> t -> (t -> t) -> t -> n
 sum term a next b
   | a > b = zero
   | otherwise = (term a) + (sum term (next a) next b)
+
+-- 1.30
+sumIter :: forall t n. (Ord t, Semiring n) => (t -> n) -> t -> (t -> t) -> t -> n
+sumIter term a next b = go a zero
+  where go a result
+         | a > b     = result
+         | otherwise = go (next a) (result + term a)
 
 inc :: forall a. (Semiring a) => a -> a
 inc n = n + one

@@ -1,7 +1,6 @@
 module Test.Main where
 
 import Prelude
-import Control.Monad.Eff.Console
 import Test.QuickCheck
 
 import Test.Recursion
@@ -28,3 +27,4 @@ main = do
   quickCheck prop_Primes
   quickCheck prop_Carmichael
   quickCheck prop_Integral
+  quickCheck prop_SumIter
