@@ -28,3 +28,4 @@ main = do
   quickCheck prop_Carmichael
   quickCheck prop_Integral
   quickCheck prop_SumIter
+  quickCheck prop_Product

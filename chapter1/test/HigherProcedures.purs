@@ -41,3 +41,8 @@ prop_SumIter :: LeftRightInt -> Boolean
 prop_SumIter (LeftRightInt a b) = s1 == s2
   where s1 = sum inc a inc b
         s2 = sumIter inc a inc b
+
+prop_Product :: LeftRightInt -> Boolean
+prop_Product (LeftRightInt a b) = s1 == s2
+  where s1 = product inc a inc b
+        s2 = productIter inc a inc b
