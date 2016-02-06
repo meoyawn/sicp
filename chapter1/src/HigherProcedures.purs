@@ -1,7 +1,7 @@
 module HigherProcedures where
 
-import Prelude
-import Data.Int
+import Prelude (class Semiring, class Ord, one, (*), otherwise, (>), zero, (+), (/), (==), mod, (||), (-))
+import Data.Int (toNumber)
 
 sum :: forall t n. (Ord t, Semiring n) => (t -> n) -> t -> (t -> t) -> t -> n
 sum term a next b
@@ -36,11 +36,23 @@ sumIter term a next b = go a zero
 -- 1.31
 product :: forall t n. (Ord t, Semiring n) => (t -> n) -> t -> (t -> t) -> t -> n
 product term a next b
-  | a > b = zero
+  | a > b = one
   | otherwise = (term a) * (product term (next a) next b)
 
 productIter :: forall t n. (Ord t, Semiring n) => (t -> n) -> t -> (t -> t) -> t -> n
-productIter term a next b = go a zero
+productIter term a next b = go a one
   where go a result
          | a > b     = result
          | otherwise = go (next a) (result * term a)
+
+-- 1.32
+accumulate :: forall t n. (Ord t, Semiring n) => (n -> n -> n) -> (n) -> (t -> n) -> t -> (t -> t) -> t -> n
+accumulate combiner nullValue term a next b
+  | a > b = nullValue
+  | otherwise = combiner (term a) (accumulate combiner nullValue term (next a) next b)
+
+accumulateIter :: forall t n. (Ord t, Semiring n) => (n -> n -> n) -> (n) -> (t -> n) -> t -> (t -> t) -> t -> n
+accumulateIter combiner nullValue term a next b = go a nullValue
+  where go a result
+         | a > b     = result
+         | otherwise = go (next a) (combiner result (term a))

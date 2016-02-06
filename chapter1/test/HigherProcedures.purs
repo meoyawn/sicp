@@ -1,11 +1,11 @@
 module Test.HigherProcedures where
 
-import Prelude (class Show, (==), return, ($), bind, negate, (-), (>=), (&&), (<=))
+import Prelude (class Show, (==), return, ($), bind, negate, (-), (>=), (&&), (<=), (*), (+), one, zero)
 import Data.Generic (class Generic, gShow)
 import Test.QuickCheck.Gen (chooseInt, choose)
 import Test.QuickCheck.Arbitrary (class Arbitrary)
 import Basic (cube)
-import HigherProcedures (inc, productIter, product, sumIter, sum, simpsonsRule, integral)
+import HigherProcedures (inc, productIter, product, sumIter, sum, simpsonsRule, integral, accumulate, accumulateIter)
 
 -- Approximate equality comparison
 approxEqual :: Number -> Number -> Boolean
@@ -47,3 +47,23 @@ prop_Product :: LeftRightInt -> Boolean
 prop_Product (LeftRightInt a b) = s1 == s2
   where s1 = product inc a inc b
         s2 = productIter inc a inc b
+
+prop_AccumulateProduct :: LeftRightInt -> Boolean
+prop_AccumulateProduct (LeftRightInt a b) = s1 == s2
+  where s1 = product inc a inc b
+        s2 = accumulate (*) one inc a inc b
+
+prop_AccumulateSum :: LeftRightInt -> Boolean
+prop_AccumulateSum (LeftRightInt a b) = s1 == s2
+  where s1 = sum inc a inc b
+        s2 = accumulate (+) zero inc a inc b
+
+prop_AccumulateProductIter :: LeftRightInt -> Boolean
+prop_AccumulateProductIter (LeftRightInt a b) = s1 == s2
+  where s1 = productIter inc a inc b
+        s2 = accumulateIter (*) one inc a inc b
+
+prop_AccumulateSumIter :: LeftRightInt -> Boolean
+prop_AccumulateSumIter (LeftRightInt a b) = s1 == s2
+  where s1 = sumIter inc a inc b
+        s2 = accumulateIter (+) zero inc a inc b

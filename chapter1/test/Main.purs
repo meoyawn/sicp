@@ -9,7 +9,7 @@ import Test.Sqrt (prop_Cbrt, prop_Sqrt)
 import Test.Sine (prop_Sine)
 import Test.Fibonacci (prop_Fib)
 import Test.Divisors (prop_Carmichael, prop_Primes, prop_SmallestDivisor)
-import Test.HigherProcedures (prop_Product, prop_SumIter, prop_Integral)
+import Test.HigherProcedures (prop_AccumulateSumIter, prop_AccumulateProductIter, prop_AccumulateSum, prop_AccumulateProduct, prop_Product, prop_SumIter, prop_Integral)
 
 main :: forall eff. QC eff Unit
 main = do
@@ -29,3 +29,7 @@ main = do
   quickCheck prop_Integral
   quickCheck prop_SumIter
   quickCheck prop_Product
+  quickCheck prop_AccumulateProduct
+  quickCheck prop_AccumulateSum
+  quickCheck prop_AccumulateProductIter
+  quickCheck prop_AccumulateSumIter
