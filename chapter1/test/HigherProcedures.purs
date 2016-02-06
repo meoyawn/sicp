@@ -1,17 +1,18 @@
 module Test.HigherProcedures where
 
-import Prelude
-import Data.Generic
-import Test.QuickCheck.Gen
-import Test.QuickCheck.Arbitrary
-
-import Basic
-import HigherProcedures
+import Prelude (class Show, (==), return, ($), bind, negate, (-), (>=), (&&), (<=))
+import Data.Generic (class Generic, gShow)
+import Test.QuickCheck.Gen (chooseInt, choose)
+import Test.QuickCheck.Arbitrary (class Arbitrary)
+import Basic (cube)
+import HigherProcedures (inc, productIter, product, sumIter, sum, simpsonsRule, integral)
 
 -- Approximate equality comparison
-(=~=) :: Number -> Number -> Boolean
-(=~=) x y = (y - x) <= eps && (y - x) >= (-eps)
+approxEqual :: Number -> Number -> Boolean
+approxEqual x y = (y - x) <= eps && (y - x) >= (-eps)
   where eps = 0.1
+
+infixl 9 approxEqual as =~=
 
 data LeftRight = LeftRight Number Number
 

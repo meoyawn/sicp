@@ -1,19 +1,17 @@
 module Test.Divisors where
 
-import Prelude
-import Divisors
-import Basic
-import Test.Exponentiation
+import Prelude (return, ($), (==), bind, (<$>), (<=))
+import Divisors (fastPrime, congruent, prime, smallestDivisor)
+import Basic (abs)
+import Test.Exponentiation (BigPower(BigPower))
 
-import Control.Monad.Eff
-import Control.Monad.Eff.Unsafe
-import Control.Monad.Eff.Random
+import Control.Monad.Eff (Eff)
+import Control.Monad.Eff.Unsafe (unsafePerformEff)
+import Control.Monad.Eff.Random (RANDOM)
 
-import Test.QuickCheck
-import Test.QuickCheck.Gen
-import Test.QuickCheck.Arbitrary
-
-import Debug.Trace
+import Test.QuickCheck (class Testable, test)
+import Test.QuickCheck.Gen (chooseInt)
+import Test.QuickCheck.Arbitrary (class Arbitrary)
 
 prop_SmallestDivisor :: Int -> Boolean
 prop_SmallestDivisor n = (abs $ smallestDivisor n) <= abs n

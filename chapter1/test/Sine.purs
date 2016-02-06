@@ -1,10 +1,8 @@
 module Test.Sine where
 
-import Prelude
-import Sine
-import Math
-
-import Test.QuickCheck.Data.ApproxNumber
+import Sine (sine)
+import Math (sin)
+import Test.QuickCheck.Data.ApproxNumber ((=~=))
 
 prop_Sine :: Number -> Boolean
 prop_Sine x = sin x =~= sine x

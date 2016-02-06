@@ -1,16 +1,14 @@
 module Test.Exponentiation where
 
-import Prelude
-import Math
+import Prelude ((==), (*), negate, (<$>))
+import Math (pow)
 import Data.Int (toNumber)
-import Debug.Trace
-import Data.Tuple
 
-import Test.QuickCheck.Arbitrary
-import Test.QuickCheck.Gen
-import Test.QuickCheck.Data.ApproxNumber
+import Test.QuickCheck.Arbitrary (class Arbitrary)
+import Test.QuickCheck.Gen (chooseInt)
+import Test.QuickCheck.Data.ApproxNumber ((=~=))
 
-import Exponentiation
+import Exponentiation (russianPeasant, fastMult, fastExptIter, fastExpt, expt)
 
 newtype SmallPower = SmallPower Int
 instance arbitrarySmallPower :: Arbitrary SmallPower where
@@ -21,7 +19,7 @@ prop_Expt b (SmallPower n) = pow b (toNumber n) =~= expt b n
 
 newtype BigPower = BigPower Int
 instance arbitraryBigPower :: Arbitrary BigPower where
-  arbitrary = BigPower <$> chooseInt 0 99999999999999999999999999999999999999999999999999999999999999999999999999999999999
+  arbitrary = BigPower <$> chooseInt 0 2147483647
 
 prop_FastExpt :: Number -> BigPower -> Boolean
 prop_FastExpt b (BigPower n) = pow b (toNumber n) =~= fastExpt b n

@@ -1,10 +1,9 @@
 module Test.Fibonacci where
 
-import Prelude
-import Fibonacci
-import Test.QuickCheck.Arbitrary
-import Test.QuickCheck.Gen
-import Debug.Trace
+import Prelude ((==), (<$>))
+import Fibonacci (fib, fibSlow)
+import Test.QuickCheck.Arbitrary (class Arbitrary)
+import Test.QuickCheck.Gen (chooseInt)
 
 newtype SmallNat = SmallNat Int
 instance arbitrarySmallNat :: Arbitrary SmallNat where
